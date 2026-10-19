@@ -1,0 +1,516 @@
+:root {
+  font-family: Inter, "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #e9e3d7;
+  background: #17232c;
+  font-synthesis: none;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: 1px solid #a98e5a66;
+  background: #1b252ce8;
+  border-radius: 4px;
+  padding: 12px 18px;
+  transition: background 0.15s;
+}
+button:hover {
+  background: #35434a;
+}
+button:focus-visible {
+  outline: 2px solid #a3d8e8;
+  outline-offset: 4px;
+}
+button:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+main {
+  width: 100vw;
+  height: 100dvh;
+  min-height: 540px;
+  position: relative;
+  overflow: hidden;
+}
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  outline: none;
+}
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
+  background: linear-gradient(#101a25d9, transparent);
+  pointer-events: none;
+}
+header button {
+  pointer-events: auto;
+}
+.brand {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  font:
+    700 23px Georgia,
+    "Songti SC",
+    serif;
+  letter-spacing: 4px;
+}
+.brand small {
+  display: block;
+  font: 9px sans-serif;
+  letter-spacing: 2px;
+  color: #a3aeb2;
+  margin-top: 7px;
+}
+.seal {
+  background: #a44634;
+  border: 1px solid #d17c59;
+  width: 38px;
+  height: 43px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 24px;
+  transform: rotate(-4deg);
+}
+.chapter {
+  font-size: 10px;
+  color: #bcb398;
+  letter-spacing: 3px;
+}
+.chapter b {
+  display: block;
+  font:
+    19px Georgia,
+    "Songti SC",
+    serif;
+  letter-spacing: 5px;
+  margin-top: 6px;
+}
+kbd {
+  font: 10px monospace;
+  border: 1px solid #bbc9c533;
+  padding: 3px 5px;
+  border-radius: 3px;
+  color: #b4c3c5;
+  white-space: nowrap;
+}
+.vitals {
+  position: absolute;
+  top: 115px;
+  left: 32px;
+  width: 240px;
+}
+.hero-name {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-name span {
+  font-size: 10px;
+  color: #bdc4bd;
+}
+.hero-name b {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 400;
+}
+.bar {
+  height: 5px;
+  background: #11191d99;
+  overflow: hidden;
+  margin-top: 9px;
+}
+.bar i {
+  height: 100%;
+  display: block;
+  width: 100%;
+  background: #83b5a6;
+  transition: width 0.15s;
+}
+.xp {
+  height: 2px;
+  margin-top: 5px;
+}
+.xp i {
+  background: #d8b771;
+}
+.subline {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  margin-top: 8px;
+  color: #b8c6c6;
+}
+.timeline {
+  position: absolute;
+  top: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.timeline span {
+  display: block;
+  font:
+    32px Georgia,
+    serif;
+  letter-spacing: 3px;
+}
+.timeline small {
+  display: block;
+  font-size: 10px;
+  margin-top: 6px;
+  color: #bcc3b8;
+}
+.objective {
+  position: absolute;
+  right: 32px;
+  top: 115px;
+  width: 230px;
+  border-left: 2px solid #c4a76f;
+  padding-left: 15px;
+}
+.eyebrow {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #d0b878;
+}
+.objective strong {
+  display: block;
+  font-size: 14px;
+  margin: 9px 0;
+}
+.objective > span:last-of-type {
+  font-size: 11px;
+  color: #bcc6c3;
+  line-height: 1.8;
+}
+.flag-progress {
+  height: 3px;
+}
+.flag-progress i {
+  background: #d2b36d;
+  width: 0;
+}
+footer {
+  position: absolute;
+  bottom: 35px;
+  left: 32px;
+  right: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  pointer-events: none;
+}
+.controls {
+  font-size: 10px;
+  color: #bbc4bd;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.skills {
+  display: flex;
+  gap: 10px;
+  pointer-events: auto;
+}
+.skills button {
+  min-width: 130px;
+  text-align: left;
+  font-size: 12px;
+}
+.skills span {
+  display: block;
+  font-size: 10px;
+  color: #d9bd79;
+  margin-top: 10px;
+}
+.version {
+  position: absolute;
+  bottom: 10px;
+  left: 32px;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #a6b2ac80;
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: #101820a8;
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 5;
+}
+.overlay:empty {
+  display: none;
+}
+.panel {
+  max-width: 750px;
+  text-align: center;
+}
+.panel .eyebrow {
+  letter-spacing: 5px;
+}
+.panel h1 {
+  font:
+    clamp(36px, 5vw, 68px) Georgia,
+    "Songti SC",
+    serif;
+  letter-spacing: 10px;
+  font-weight: 400;
+  margin: 22px 0;
+}
+.panel p {
+  color: #bdc8c7;
+  font-size: 13px;
+  line-height: 2.1;
+  margin: 0 auto 23px;
+  max-width: 540px;
+}
+.panel .primary {
+  background: #bc9c60;
+  color: #17232c;
+  font-weight: 700;
+  padding: 15px 35px;
+  border: 0;
+}
+.panel .primary:hover {
+  background: #d3b87f;
+}
+.panel .hint {
+  display: block;
+  font-size: 10px;
+  color: #9caeb2;
+  margin-top: 17px;
+}
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 26px;
+}
+.choice {
+  text-align: left;
+  width: 220px;
+  min-height: 180px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #182b35;
+}
+.choice:hover {
+  background: #2b414b;
+  border-color: #d0b778;
+}
+.choice small {
+  color: #c6a972;
+  font-size: 10px;
+}
+.choice b {
+  font-size: 18px;
+  font-weight: 500;
+}
+.choice span {
+  font-size: 12px;
+  color: #acbdc0;
+  line-height: 1.8;
+}
+.report {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  font-size: 12px;
+  color: #c8b581;
+  margin-bottom: 24px;
+}
+#notice {
+  position: absolute;
+  top: 220px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  color: #f1d798;
+  text-align: center;
+  text-shadow: 0 2px 5px #000;
+  pointer-events: none;
+}
+#error {
+  position: absolute;
+  inset: 25%;
+  background: #28232a;
+  color: #ffd4c0;
+  padding: 30px;
+  z-index: 20;
+}
+.touch-move,
+#touch-flag {
+  display: none;
+}
+@media (max-width: 760px) {
+  header {
+    padding: 18px;
+  }
+  .brand {
+    font-size: 18px;
+  }
+  .brand small {
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+  .chapter {
+    display: none;
+  }
+  .vitals {
+    top: 100px;
+    left: 18px;
+    width: 160px;
+  }
+  .hero-name {
+    font-size: 13px;
+    gap: 6px;
+  }
+  .hero-name span {
+    font-size: 8px;
+  }
+  .timeline {
+    top: 98px;
+    left: auto;
+    right: 18px;
+    transform: none;
+  }
+  .timeline span {
+    font-size: 25px;
+  }
+  .timeline small {
+    font-size: 8px;
+  }
+  .objective {
+    top: 176px;
+    left: 18px;
+    right: auto;
+    width: 170px;
+    background: #16222b88;
+    padding: 8px 10px;
+  }
+  .objective strong {
+    font-size: 11px;
+  }
+  .objective > span:last-of-type {
+    font-size: 10px;
+  }
+  .eyebrow {
+    font-size: 8px;
+  }
+  footer {
+    bottom: 40px;
+    left: 18px;
+    right: 18px;
+    justify-content: flex-end;
+  }
+  .controls {
+    display: none;
+  }
+  .skills {
+    gap: 7px;
+    flex-direction: column;
+  }
+  .skills button {
+    min-width: 110px;
+    padding: 10px;
+    font-size: 10px;
+  }
+  .skills span {
+    margin-top: 5px;
+  }
+  .touch-move {
+    display: block;
+    position: absolute;
+    bottom: 45px;
+    left: 18px;
+  }
+  .touch-move > button {
+    margin-left: 44px;
+  }
+  .touch-move button {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    touch-action: none;
+  }
+  .touch-move div {
+    display: flex;
+    gap: 2px;
+    margin-top: 2px;
+  }
+  #touch-flag {
+    display: block;
+    position: absolute;
+    bottom: 174px;
+    right: 18px;
+    font-size: 10px;
+    touch-action: none;
+  }
+  .version {
+    font-size: 8px;
+    left: 18px;
+  }
+  .panel h1 {
+    font-size: 36px;
+    letter-spacing: 5px;
+  }
+  .panel p {
+    font-size: 12px;
+  }
+  .choice-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .choice {
+    width: min(320px, 82vw);
+    min-height: 90px;
+    padding: 12px 18px;
+    gap: 7px;
+  }
+  .choice b {
+    font-size: 15px;
+  }
+  .choice span {
+    font-size: 11px;
+  }
+  #notice {
+    top: 285px;
+    width: 90%;
+    font-size: 12px;
+  }
+  kbd {
+    font-size: 8px;
+  }
+  .report {
+    gap: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

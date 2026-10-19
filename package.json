@@ -1,0 +1,9 @@
+{
+  "name": "sanguo-breakthrough-prototype",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs",
+    "check": "node tests.mjs"
+  }
+}

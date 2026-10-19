@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-19",
+  "verified": [
+    "WebGL scene and original pixel soldiers render",
+    "W held for 2.2 seconds reaches flag",
+    "E held for 10 seconds captures flag and recruits ally",
+    "upgrade choice applies and surplus XP opens next level",
+    "pause button displays paused state",
+    "390x844 viewport: document width 390, canvas width 390, touch controls visible without horizontal overflow",
+    "no console errors or warnings during sampled checks"
+  ],
+  "automated": "12 pure-rule checks, including complete 180-second seeded winning simulation",
+  "limits": [
+    "No complete 3-minute browser playthrough",
+    "No real mobile touch hardware test",
+    "No FPS, thermal or long-session memory benchmark",
+    "Decorative camp objects have no collisions"
+  ]
+}
