@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#161d24" />
+    <title>三国 · 破阵录 — 颍川夜战</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main>
+      <canvas
+        id="battle"
+        tabindex="0"
+        aria-label="三国战场，使用 WASD 移动，空格闪避，Q 无双，按住 E 夺旗"
+      ></canvas>
+      <header>
+        <div class="brand">
+          <span class="seal">阵</span>
+          <div>三国 · 破阵录<small>YINGCHUAN / PLAYABLE PROTOTYPE</small></div>
+        </div>
+        <div class="chapter">第一阵 <b>颍川夜战</b></div>
+        <button id="pause">暂停 <kbd>Esc</kbd></button>
+      </header>
+      <section class="vitals" aria-label="武将状态">
+        <div class="hero-name">
+          赵云 <span id="rank">常山少年</span><b id="hp-text"></b>
+        </div>
+        <div class="bar"><i id="hp-bar"></i></div>
+        <div class="xp bar"><i id="xp-bar"></i></div>
+        <div class="subline">
+          <span id="level"></span><span id="kills"></span>
+        </div>
+      </section>
+      <section class="timeline">
+        <span id="clock">03:00</span
+        ><small id="stage">兵书演阵 · 单局三分钟</small>
+      </section>
+      <section class="objective">
+        <span class="eyebrow">战场军令</span><strong id="objective"></strong
+        ><span id="flag-detail"></span>
+        <div class="bar flag-progress"><i id="flag-bar"></i></div>
+      </section>
+      <div id="notice" role="status"></div>
+      <div id="overlay" class="overlay"></div>
+      <footer>
+        <div class="controls">
+          <span><kbd>W A S D</kbd> 移动 · 自动刺击</span
+          ><span><kbd>Space</kbd> 穿阵闪避</span
+          ><span><kbd>E</kbd> 按住夺旗</span>
+        </div>
+        <div class="skills">
+          <button id="dash">
+            龙影闪 <kbd>Space</kbd><span id="stamina"></span></button
+          ><button id="musou">
+            龙胆震阵 <kbd>Q</kbd><span id="charge"></span>
+          </button>
+        </div>
+      </footer>
+      <div class="touch-move" aria-label="触屏移动">
+        <button data-move="up" aria-label="向前">↑</button>
+        <div>
+          <button data-move="left" aria-label="向左">←</button
+          ><button data-move="down" aria-label="向后">↓</button
+          ><button data-move="right" aria-label="向右">→</button>
+        </div>
+      </div>
+      <button id="touch-flag">按住夺旗</button>
+      <div class="version">原型 0.1 · 原创像素 / Three.js · 非完整游戏</div>
+      <div id="error" hidden role="alert"></div>
+    </main>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-20",
+  "version": "0.2-army",
+  "browserVerified": [
+    "Recruit a general and create a four-squad army",
+    "Move a squad to a different deployment cell using terrain picking",
+    "Begin battle, pause, select Liu Bei, issue hold command to only his squad",
+    "Aim and cast fire on the map while paused: command points 80 -> 40",
+    "390x844 layout with no horizontal overflow and working quick squad selection",
+    "Original single-hero mode retained at classic.html"
+  ],
+  "automated": "15 army-rule tests plus 12 unchanged classic-rule tests; seeded complete three-battle winning simulation",
+  "limits": [
+    "No full manual browser campaign win asserted",
+    "No real mobile hardware touch test",
+    "No independent soldier navigation/collision",
+    "No performance benchmark or long-session memory profile"
+  ]
+}

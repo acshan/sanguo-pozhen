@@ -1,9 +1,9 @@
 {
-  "name": "sanguo-breakthrough-prototype",
+  "name": "sanguo-pozhen-army",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "node server.mjs",
-    "check": "node tests.mjs"
+    "check": "node tests.mjs && node army/tests.mjs"
   }
 }

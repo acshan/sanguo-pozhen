@@ -2,76 +2,109 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1,viewport-fit=cover"
-    />
-    <meta name="theme-color" content="#161d24" />
-    <title>三国 · 破阵录 — 颍川夜战</title>
-    <link rel="stylesheet" href="./style.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#14272d" />
+    <title>三国·破阵录 — 军势指挥版</title>
+    <link rel="stylesheet" href="./army/style.css" />
   </head>
   <body>
-    <main>
-      <canvas
-        id="battle"
-        tabindex="0"
-        aria-label="三国战场，使用 WASD 移动，空格闪避，Q 无双，按住 E 夺旗"
-      ></canvas>
-      <header>
-        <div class="brand">
-          <span class="seal">阵</span>
-          <div>三国 · 破阵录<small>YINGCHUAN / PLAYABLE PROTOTYPE</small></div>
-        </div>
-        <div class="chapter">第一阵 <b>颍川夜战</b></div>
-        <button id="pause">暂停 <kbd>Esc</kbd></button>
-      </header>
-      <section class="vitals" aria-label="武将状态">
-        <div class="hero-name">
-          赵云 <span id="rank">常山少年</span><b id="hp-text"></b>
-        </div>
-        <div class="bar"><i id="hp-bar"></i></div>
-        <div class="xp bar"><i id="xp-bar"></i></div>
-        <div class="subline">
-          <span id="level"></span><span id="kills"></span>
-        </div>
-      </section>
-      <section class="timeline">
-        <span id="clock">03:00</span
-        ><small id="stage">兵书演阵 · 单局三分钟</small>
-      </section>
-      <section class="objective">
-        <span class="eyebrow">战场军令</span><strong id="objective"></strong
-        ><span id="flag-detail"></span>
-        <div class="bar flag-progress"><i id="flag-bar"></i></div>
-      </section>
-      <div id="notice" role="status"></div>
-      <div id="overlay" class="overlay"></div>
-      <footer>
-        <div class="controls">
-          <span><kbd>W A S D</kbd> 移动 · 自动刺击</span
-          ><span><kbd>Space</kbd> 穿阵闪避</span
-          ><span><kbd>E</kbd> 按住夺旗</span>
-        </div>
-        <div class="skills">
-          <button id="dash">
-            龙影闪 <kbd>Space</kbd><span id="stamina"></span></button
-          ><button id="musou">
-            龙胆震阵 <kbd>Q</kbd><span id="charge"></span>
-          </button>
-        </div>
-      </footer>
-      <div class="touch-move" aria-label="触屏移动">
-        <button data-move="up" aria-label="向前">↑</button>
+    <header>
+      <div class="brand">
+        <span class="seal">令</span>
         <div>
-          <button data-move="left" aria-label="向左">←</button
-          ><button data-move="down" aria-label="向后">↓</button
-          ><button data-move="right" aria-label="向右">→</button>
+          <b>三国 · 破阵录</b><small>ARMY COMMAND / 军势指挥版 0.2</small>
         </div>
       </div>
-      <button id="touch-flag">按住夺旗</button>
-      <div class="version">原型 0.1 · 原创像素 / Three.js · 非完整游戏</div>
-      <div id="error" hidden role="alert"></div>
+      <div id="round-label">第一阵 · 颍川前哨</div>
+      <div class="header-links">
+        <a href="./classic.html">旧版单人原型 ↗</a
+        ><button id="restart">重新演阵</button>
+      </div>
+    </header>
+    <main>
+      <section class="battle-area">
+        <div class="battle-top">
+          <div>
+            <span class="eyebrow">我军 / 敌军</span
+            ><strong id="strength"></strong>
+          </div>
+          <div class="top-middle">
+            <b id="phase-label"></b><span id="clock"></span>
+          </div>
+          <div class="right">
+            <span class="eyebrow">中军旗</span><strong id="flag-label"></strong>
+          </div>
+        </div>
+        <div class="canvas-wrap">
+          <canvas
+            id="battle"
+            tabindex="0"
+            aria-label="军势战场：选择部队后点击下达命令；布阵时点击南侧格子调整位置"
+          ></canvas>
+          <div id="tip" role="status"></div>
+          <div class="map-label">
+            敌军在北 · 我军在南<br />兵种相克：骑 → 弓 → 枪 → 骑
+          </div>
+          <div id="tactics-banner" hidden>
+            战术暂停 · 可选队、指定位置和施放军略
+          </div>
+        </div>
+        <div id="quick-select" class="quick-select" aria-label="快捷选队"></div>
+        <div class="orders">
+          <button id="all">全军 <kbd>0</kbd></button
+          ><button data-order="advance">推进 <kbd>A</kbd></button
+          ><button data-order="hold">坚守 <kbd>H</kbd></button
+          ><button data-order="retreat">回撤 <kbd>R</kbd></button
+          ><button id="pause">战术暂停 <kbd>Space</kbd></button>
+        </div>
+        <div class="tactics">
+          <div><span class="eyebrow">指挥点</span><b id="command"></b></div>
+          <button data-tactic="fire">火计 <span>40 · 点击战场施放</span></button
+          ><button data-tactic="heal">
+            整军 <span>35 · 恢复选中部队</span></button
+          ><button data-tactic="speed">
+            疾行 <span>25 · 全军加速 6 秒</span>
+          </button>
+        </div>
+      </section>
+      <aside>
+        <section class="section-heading">
+          <div>
+            <span class="eyebrow">你的军势</span>
+            <h1>将有其兵，兵有其阵。</h1>
+          </div>
+          <span id="roster-count"></span>
+        </section>
+        <p class="instruction" id="instruction"></p>
+        <div id="roster"></div>
+        <section class="formation">
+          <span class="eyebrow">队内阵型 · 选中一队或全军</span>
+          <div>
+            <button data-formation="line">横阵 · 展开</button
+            ><button data-formation="wedge">锋矢 · 集中</button>
+          </div>
+        </section>
+        <section>
+          <span class="eyebrow">战前协同 / 相邻格触发</span>
+          <div id="synergies"></div>
+        </section>
+        <section>
+          <span class="eyebrow">敌情 · 战前公开</span>
+          <div id="scouting"></div>
+        </section>
+        <section class="dispatch">
+          <span class="eyebrow">军令战报</span>
+          <div id="log" aria-live="polite"></div>
+        </section>
+        <button id="begin" class="primary">确认布阵 · 全军出阵 →</button>
+        <p class="footnote">
+          原创规则与像素表现 · 单人三场连战原型<br />无须操作单个武将走位 ·
+          无账号 / 无付费
+        </p>
+      </aside>
     </main>
-    <script type="module" src="./src/main.js"></script>
+    <div id="overlay" class="overlay"></div>
+    <div id="error" hidden role="alert"></div>
+    <script type="module" src="./army/main.js"></script>
   </body>
 </html>

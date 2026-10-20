@@ -1,0 +1,733 @@
+:root {
+  font-family: Inter, "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #ece7db;
+  background: #13262d;
+  font-synthesis: none;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+button,
+a {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+  color: inherit;
+  border: 1px solid #8fa7a348;
+  background: #20353d;
+  padding: 11px 15px;
+  border-radius: 5px;
+}
+button:hover {
+  background: #344b51;
+  border-color: #c9b47d;
+}
+button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #e7c47e;
+  outline-offset: 3px;
+}
+a {
+  color: #b2c8c9;
+  text-decoration: none;
+}
+kbd {
+  font: 9px monospace;
+  color: #b5c7c7;
+  border: 1px solid #94aba83d;
+  padding: 2px 4px;
+  border-radius: 3px;
+  margin-left: 5px;
+}
+header {
+  height: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  border-bottom: 1px solid #aabebf22;
+  background: #14262c;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+.brand b {
+  font:
+    23px Georgia,
+    "Songti SC",
+    serif;
+  letter-spacing: 4px;
+}
+.brand small {
+  display: block;
+  color: #91a9ac;
+  font-size: 8px;
+  letter-spacing: 2px;
+  margin-top: 7px;
+}
+.seal {
+  display: block;
+  width: 37px;
+  height: 44px;
+  background: #a2513d;
+  transform: rotate(-4deg);
+  text-align: center;
+  line-height: 44px;
+  font:
+    28px/44px Georgia,
+    "Songti SC",
+    serif;
+  border: 1px solid #d39266;
+}
+.header-links {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  font-size: 10px;
+}
+#round-label {
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: #cfbc8c;
+}
+main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  height: calc(100dvh - 85px);
+  min-height: 710px;
+  max-width: 1900px;
+  margin: auto;
+}
+.battle-area {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 22px 25px 18px;
+}
+.battle-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  height: 67px;
+}
+.eyebrow {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #acbfba;
+  line-height: 1.6;
+}
+.battle-top strong {
+  display: block;
+  font:
+    23px Georgia,
+    "Songti SC",
+    serif;
+  letter-spacing: 2px;
+  margin-top: 5px;
+}
+.battle-top .right {
+  text-align: right;
+}
+.top-middle {
+  text-align: center;
+}
+.top-middle b {
+  font-size: 12px;
+  font-weight: 500;
+  color: #d5bb7e;
+}
+.top-middle span {
+  display: block;
+  font-size: 11px;
+  color: #9fb5b3;
+  margin-top: 5px;
+}
+.canvas-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 390px;
+  overflow: hidden;
+  border: 1px solid #9eb8ae3b;
+  background: #253b3f;
+  border-radius: 6px;
+}
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  outline: none;
+  touch-action: none;
+}
+.map-label {
+  position: absolute;
+  top: 15px;
+  left: 16px;
+  font-size: 10px;
+  color: #d9dbc7a3;
+  line-height: 1.8;
+  pointer-events: none;
+  background: #142c3466;
+  padding: 7px 10px;
+}
+#tip {
+  position: absolute;
+  bottom: 13px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: #f1d7a1;
+  text-align: center;
+  background: #152b34dd;
+  padding: 8px 12px;
+  border-radius: 4px;
+  max-width: 90%;
+  pointer-events: none;
+  white-space: nowrap;
+}
+#tip:empty {
+  display: none;
+}
+#tactics-banner {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #e0bb73;
+  color: #19303a;
+  padding: 9px 17px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.orders {
+  display: flex;
+  gap: 8px;
+  margin-top: 13px;
+}
+.orders button {
+  flex: 1;
+  font-size: 12px;
+  padding: 10px 8px;
+  white-space: nowrap;
+}
+.orders #pause {
+  flex: 1.5;
+  background: #405259;
+}
+.orders #all.selected {
+  border-color: #e0c484;
+  color: #ecd397;
+}
+.tactics {
+  display: flex;
+  gap: 8px;
+  margin-top: 9px;
+  align-items: stretch;
+}
+.tactics > div {
+  padding: 6px 10px;
+  min-width: 100px;
+}
+.tactics b {
+  font:
+    24px Georgia,
+    serif;
+  color: #dec186;
+}
+.tactics button {
+  flex: 1;
+  text-align: left;
+  font-size: 12px;
+}
+.tactics span {
+  display: block;
+  font-size: 9px;
+  color: #a9b9b5;
+  margin-top: 5px;
+}
+.tactics button.active {
+  border-color: #ebb05e;
+  color: #f2ce83;
+}
+aside {
+  border-left: 1px solid #a5beba26;
+  background: #182e36;
+  padding: 24px 23px;
+  overflow-y: auto;
+}
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+h1 {
+  font:
+    19px Georgia,
+    "Songti SC",
+    serif;
+  letter-spacing: 1px;
+  font-weight: 400;
+  margin: 9px 0;
+}
+.section-heading > span {
+  font:
+    21px Georgia,
+    serif;
+  color: #bdac82;
+}
+.instruction {
+  font-size: 10px;
+  color: #a5baba;
+  line-height: 1.8;
+  margin: 7px 0 16px;
+}
+#roster {
+  display: grid;
+  gap: 7px;
+}
+.squad-card {
+  display: flex;
+  text-align: left;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 12px;
+  align-items: center;
+  background: #213a42;
+}
+.squad-card.selected {
+  border-color: #dfc07b;
+  background: #2d4649;
+}
+.squad-card.dead {
+  opacity: 0.45;
+}
+.type-icon {
+  border: 1px solid currentColor;
+  width: 30px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.squad-body {
+  flex: 1;
+  min-width: 0;
+}
+.squad-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.squad-top b {
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+.squad-top small {
+  font-size: 10px;
+  color: #a9c2bd;
+}
+.squad-bar {
+  height: 3px;
+  background: #10272d;
+  margin-top: 8px;
+  overflow: hidden;
+}
+.squad-bar i {
+  display: block;
+  height: 100%;
+  background: #93c6b2;
+}
+.squad-desc {
+  font-size: 9px;
+  color: #a6bcbd;
+  line-height: 1.6;
+  margin-top: 5px;
+}
+aside section:not(:first-child) {
+  margin-top: 20px;
+}
+.formation > div {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+.formation button {
+  font-size: 11px;
+  flex: 1;
+  padding: 9px;
+}
+.formation button.active {
+  border-color: #c9ae73;
+}
+#synergies,
+#scouting {
+  font-size: 10px;
+  line-height: 1.9;
+  color: #c2cbbd;
+  margin-top: 7px;
+}
+.synergy {
+  padding: 6px 9px;
+  background: #3b534429;
+  margin-bottom: 5px;
+  border-left: 2px solid #a2ba83;
+}
+.scout-type {
+  display: inline-block;
+  margin-right: 10px;
+}
+#log p {
+  font-size: 10px;
+  line-height: 1.7;
+  color: #90aaa9;
+  margin: 5px 0;
+}
+#log p:first-child {
+  color: #d6c493;
+}
+.primary {
+  background: #c4a66b;
+  color: #152c35;
+  font-weight: 700;
+  border: 0;
+}
+#begin {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+}
+.primary:hover {
+  background: #dec387;
+}
+.footnote {
+  font-size: 9px;
+  color: #789296;
+  text-align: center;
+  line-height: 1.8;
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: #0d2029ba;
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  z-index: 10;
+}
+.overlay:empty {
+  display: none;
+}
+.draft-panel {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+}
+.draft-panel h2 {
+  font:
+    clamp(30px, 4vw, 54px) Georgia,
+    "Songti SC",
+    serif;
+  letter-spacing: 7px;
+  margin: 15px 0 16px;
+  font-weight: 400;
+}
+.draft-panel p {
+  font-size: 12px;
+  color: #bdceca;
+  line-height: 1.9;
+}
+.draft-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 25px auto;
+  max-width: 800px;
+}
+.draft-card {
+  text-align: left;
+  background: #203840;
+  min-height: 225px;
+  padding: 23px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 15px;
+  border-color: #b3bba657;
+}
+.draft-card:hover {
+  transform: translateY(-3px);
+}
+.draft-card small {
+  font-size: 9px;
+  color: #cfb67b;
+  letter-spacing: 2px;
+}
+.draft-card b {
+  font:
+    26px Georgia,
+    "Songti SC",
+    serif;
+  letter-spacing: 3px;
+}
+.draft-card span {
+  font-size: 11px;
+  color: #b8c9c5;
+  line-height: 1.8;
+}
+.draft-card em {
+  font-size: 10px;
+  font-style: normal;
+  color: #dfc68b;
+  margin-top: auto;
+}
+.flow {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #c4ba9b;
+}
+.battle-report {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  font-size: 13px;
+  color: #dec282;
+  margin: 25px 0;
+}
+#error {
+  position: fixed;
+  inset: 25%;
+  z-index: 20;
+  background: #382c2c;
+  padding: 25px;
+}
+button,
+canvas {
+  -webkit-tap-highlight-color: transparent;
+}
+@media (max-width: 1000px) {
+  main {
+    grid-template-columns: minmax(0, 1fr) 290px;
+  }
+  .battle-area {
+    padding: 16px;
+  }
+  aside {
+    padding: 18px 15px;
+  }
+  .orders kbd {
+    display: none;
+  }
+  header {
+    padding: 0 20px;
+  }
+  .brand b {
+    font-size: 20px;
+  }
+  #round-label {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+}
+@media (max-width: 730px) {
+  header {
+    height: auto;
+    min-height: 86px;
+    padding: 15px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .brand b {
+    font-size: 18px;
+  }
+  .brand small {
+    font-size: 7px;
+  }
+  .header-links {
+    gap: 10px;
+  }
+  .header-links a {
+    display: none;
+  }
+  #round-label {
+    order: 3;
+    width: 100%;
+    font-size: 10px;
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+  }
+  .battle-area {
+    padding: 10px;
+  }
+  .battle-top {
+    height: 62px;
+  }
+  .battle-top strong {
+    font-size: 18px;
+  }
+  .canvas-wrap {
+    flex: none;
+    height: 420px;
+    min-height: 0;
+  }
+  .orders {
+    gap: 5px;
+    margin-top: 8px;
+  }
+  .orders button {
+    font-size: 10px;
+    padding: 11px 4px;
+    white-space: normal;
+  }
+  .tactics {
+    gap: 5px;
+  }
+  .tactics > div {
+    min-width: 63px;
+    padding: 4px;
+  }
+  .tactics button {
+    font-size: 10px;
+    padding: 8px;
+  }
+  .tactics span {
+    font-size: 8px;
+  }
+  .map-label {
+    font-size: 8px;
+    left: 7px;
+    top: 7px;
+    padding: 4px 6px;
+  }
+  #tip {
+    white-space: normal;
+    width: 90%;
+    font-size: 10px;
+    bottom: 7px;
+  }
+  #tactics-banner {
+    top: 54px;
+    font-size: 10px;
+    padding: 7px;
+    width: 90%;
+    text-align: center;
+  }
+  aside {
+    border-left: 0;
+    border-top: 1px solid #91b0a743;
+    overflow: visible;
+    padding: 20px;
+  }
+  #roster {
+    grid-template-columns: 1fr 1fr;
+  }
+  .squad-card {
+    padding: 10px 8px;
+    gap: 7px;
+  }
+  .squad-desc {
+    font-size: 8px;
+  }
+  .squad-top small {
+    font-size: 8px;
+  }
+  .squad-top b {
+    font-size: 12px;
+  }
+  .type-icon {
+    width: 25px;
+    height: 30px;
+    font-size: 12px;
+  }
+  .draft-cards {
+    gap: 8px;
+    grid-template-columns: 1fr;
+    margin: 15px auto;
+  }
+  .draft-card {
+    min-height: 115px;
+    padding: 14px 18px;
+    gap: 7px;
+  }
+  .draft-card b {
+    font-size: 20px;
+  }
+  .draft-card span {
+    font-size: 10px;
+  }
+  .draft-card em {
+    font-size: 9px;
+  }
+  .draft-panel h2 {
+    font-size: 28px;
+    letter-spacing: 4px;
+  }
+  .draft-panel p {
+    font-size: 11px;
+    margin: 5px;
+  }
+  .overlay {
+    padding: 20px;
+    overflow: auto;
+  }
+  .flow {
+    font-size: 8px;
+    letter-spacing: 0;
+  }
+  .battle-report {
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 11px;
+  }
+  .draft-card:hover {
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+.quick-select {
+  display: none;
+}
+@media (max-width: 730px) {
+  .quick-select {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .quick-select button {
+    font-size: 10px;
+    padding: 9px 10px;
+    flex: 1;
+    white-space: nowrap;
+  }
+  .quick-select button.selected {
+    border-color: #ddbf7c;
+    background: #3b504f;
+  }
+}
